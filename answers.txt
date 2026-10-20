@@ -1,0 +1,31 @@
+6.1:
+  Question: What happens if users choose "Cancel"?
+  Answer: If users choose "Cancel", 'JOptionPane.showConfirmDialog()' method returns an
+integer 2, which is equal to the constant 'JOptionPane.CANCEL_OPTION'. Therefore, the 
+variable 'option' is 2. Next, in "JOptionPane.showMessageDialog()" method, 'option' is not
+equal to the constant 'JOptionPane.YES_OPTION', which equals to 0. So, the result of the 
+comparison is FALSE and the message in the second dialog is 'You've chosen: No'.
+
+  Question: How to customize the options to users, e.g. only two options: "Yes" and "No", 
+OR "I do" and "I don't"?
+  Answer: To customize the options to users, you need to use the fourth parameter of
+'JOptionPane.showConfirmDialog()'. For example, to show only two options "Yes" and "No", 
+you just set the fourth parameter into the constant 'JOptionPane.YES_ON_OPTION'. So, you 
+change the first command:
+
+    int option = JOptionPane.showConfirmDialog(null,
+			"Do you want to change to the first class ticket?",
+      "Confirm", JOptionPane.YES_ON_OPTION);
+
+But to show only "I do" and "I don't", you need to have an array of Strings representing an 
+option and use the 'JOptionPane.showOptionDialog()' method. So, you declare an array of 
+options:
+
+    String[] options = {"I do", "I don't"};
+
+and change the first command:
+
+		int option = JOptionPane.showOptionDialog(null,
+			"Do you want to change to the first class ticket?",
+      "Confirm", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+      options, options[0]);
